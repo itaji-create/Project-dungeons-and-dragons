@@ -1,13 +1,13 @@
-import Orc from './Orc';
 import Race from './Race';
 
 class Elf extends Race {
   private _maxLifePoints: number;
-  static _instace: number = 0;
+  private static _instace: number = 0;
+
   constructor(name: string, dexterity: number) {
     super(name, dexterity);
     this._maxLifePoints = 99;
-    Elf._instace += 1;
+    
   }
 
   get maxLifePoints(): number {
@@ -15,7 +15,8 @@ class Elf extends Race {
   }
 
   public static createdRacesInstances(): number {
-    return Elf._instace;
+    this._instace += 1;
+    return this._instace;
   }
 }
 
