@@ -2,12 +2,11 @@ import Race from './Race';
 
 class Halfling extends Race {
   private _maxLifePoints: number;
-  static _instace: number;
+  private static _instance: number;
 
   constructor(name: string, dexterity: number) {
     super(name, dexterity);
     this._maxLifePoints = 60;
-    Halfling._instace = 0;
   }
 
   get maxLifePoints(): number {
@@ -15,8 +14,10 @@ class Halfling extends Race {
   }
 
   public static createdRacesInstances(): number {
-    this._instace += 1;
-    return this._instace;
+    if (this._instance === undefined) this._instance = 0;
+
+    this._instance += 1;
+    return this._instance;
   }
 }
 

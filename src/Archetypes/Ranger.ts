@@ -3,17 +3,18 @@ import { EnergyType } from '../Energy';
 
 class Ranger extends Archetype {
   private _energyType: EnergyType = 'stamina';
-  static _instace: number;
+  static _instance: number;
 
   constructor(name: string) {
     super(name);
     this._energyType = 'stamina';
-    Ranger._instace = 0;
   }
 
   static createdArchetypeInstances() {
-    this._instace += 1;
-    return this._instace;
+    if (this._instance === undefined) this._instance = 0;
+
+    this._instance += 1;
+    return this._instance;
   }
 
   get energyType(): EnergyType {        
