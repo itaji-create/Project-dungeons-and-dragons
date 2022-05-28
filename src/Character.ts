@@ -60,11 +60,11 @@ class Character implements Fighter {
     return this._defense;
   }
 
-  attack(enemy: Fighter | SimpleFighter): void {
+  attack(enemy: SimpleFighter): void {
     enemy.receiveDamage(this._strength);
   }
 
-  special(enemy: Fighter | SimpleFighter): void {
+  special(enemy: SimpleFighter): void {
     this._maxLifePoints += 10;
     enemy.receiveDamage(40);
   }
@@ -86,7 +86,7 @@ class Character implements Fighter {
     if (damage < 1) {
       this._lifePoints += damage;
     }
-    if (this._lifePoints === 0 || this._lifePoints < 1) return -1;
+    if (this._lifePoints === 0 || this._lifePoints < 1) this._lifePoints = -1;
     return this._lifePoints;
   }
 }
